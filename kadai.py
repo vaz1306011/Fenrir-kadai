@@ -5,11 +5,11 @@ def isValid(s: str) -> bool:
     bracket_map = {")": "(", "}": "{", "]": "["}
     bracket_stack = []
     for c in s:
-        if c not in bracket_map:
-            bracket_stack.append(c)
-        else:
+        if c in bracket_map:
             if not bracket_stack or bracket_stack.pop() != bracket_map.get(c):
                 return False
+        else:
+            bracket_stack.append(c)
     return not bracket_stack
 
 
